@@ -12,12 +12,12 @@ namespace GTE
     class GameMain
     {
         // FIELDS
-        Rectangle Player;
+        Player LocalPlayer;
 
         // CONSTRUCTOR
         public GameMain()
         {
-            Player = new Rectangle(0, 0, 16, 16);
+            LocalPlayer = new Player();
         }
 
         // METHODS
@@ -25,11 +25,11 @@ namespace GTE
         // UPDTA & DRAW
         public void Updtate(MouseState mouse, KeyboardState keyboard)
         {
+            LocalPlayer.Updtate(mouse, keyboard);
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Resources.Player, Player, Color.LimeGreen);
+            LocalPlayer.Draw(spriteBatch);
         }
     }
 }

@@ -19,35 +19,37 @@ namespace GTE
 
         GameMain Main;
 
-        public Game1()
+        public Game1() // Constructeur de la classe.
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            //this.IsMouseVisible = true; // Affiche la souris;
+            //graphics.IsFullScreen = true; // met en full screen
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-        }
+        } // On s'en moque on ne touche pas
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Resources.LoadContent(Content);
             Main = new GameMain();
-        }
+        } // Charge les contents
 
         protected override void UnloadContent()
         {
             Content.Unload();
-        }
+        } // On s'en moque on ne touche pas.
 
 
         protected override void Update(GameTime gameTime)
         {
            Main.Updtate(Mouse.GetState(), Keyboard.GetState()); 
            base.Update(gameTime);
-        }
+        } // Sert à mettre à jouer le jeu
 
         protected override void Draw(GameTime gameTime)
         {
@@ -56,6 +58,6 @@ namespace GTE
             Main.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
-        }
+        } // Dessine.
     }
 }
