@@ -23,7 +23,7 @@ namespace GTE
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            //this.IsMouseVisible = true; // Affiche la souris;
+            this.IsMouseVisible = true; // Affiche la souris;
             //graphics.IsFullScreen = true; // met en full screen
         }
 

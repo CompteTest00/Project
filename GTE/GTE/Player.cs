@@ -70,35 +70,80 @@ namespace GTE
         }// Anime le personnage.
 
         // UPDATE & DRAW
-        public void Updtate(MouseState mouse, KeyboardState keyboard)
+        public void Updtate(MouseState mouse, KeyboardState keyboard, List<Wall> walls)
         {
             // On fait se déplacer le personnage.
-            if (keyboard.IsKeyDown(Keys.Up))
+            if (keyboard.IsKeyDown(Keys.Up)) // UP
             {
-                this.Hitbox.Y -= this.Speed;
+                Rectangle newHitbox = new Rectangle(this.Hitbox.X, this.Hitbox.Y - this.Speed, this.Hitbox.Width, this.Hitbox.Height);
+                bool collide = false;
+                foreach (Wall wall in walls)
+                {
+                    if (newHitbox.Intersects(wall.Hitbox))
+                    {
+                        collide = true;
+                        break;
+                    }
+                }
+                if(!collide)
+                    this.Hitbox.Y -= this.Speed;
                 this.Direction = Direction.Up;
                 this.Animate();
-
             }
-            else if (keyboard.IsKeyDown(Keys.Down))
+            else if (keyboard.IsKeyDown(Keys.Down)) // DOWN
             {
-                this.Hitbox.Y += this.Speed;
+                Rectangle newHitbox = new Rectangle(this.Hitbox.X, this.Hitbox.Y + this.Speed, this.Hitbox.Width, this.Hitbox.Height);
+                bool collide = false;
+                foreach (Wall wall in walls)
+                {
+                    if (newHitbox.Intersects(wall.Hitbox))
+                    {
+                        collide = true;
+                        break;
+                    }
+                }
+                if (!collide)
+                    this.Hitbox.Y += this.Speed;
                 this.Direction = Direction.Down;
                 this.Animate();
             }
-            else if (keyboard.IsKeyDown(Keys.Left))
+            else if (keyboard.IsKeyDown(Keys.Left)) // LEFT
             {
-                this.Hitbox.X -= this.Speed;
+                Rectangle newHitbox = new Rectangle(this.Hitbox.X - this.Speed, this.Hitbox.Y, this.Hitbox.Width, this.Hitbox.Height);
+                bool collide = false;
+                foreach (Wall wall in walls)
+                {
+                    if (newHitbox.Intersects(wall.Hitbox))
+                    {
+                        collide = true;
+                        break;
+                    }
+                }
+                if (!collide)
+                    this.Hitbox.X -= this.Speed;
                 this.Direction = Direction.Left;
                 this.Animate();
             }
-            else if (keyboard.IsKeyDown(Keys.Right))
+            else if (keyboard.IsKeyDown(Keys.Right)) // RIGHT
             {
-                this.Hitbox.X += this.Speed;
+                Rectangle newHitbox = new Rectangle(this.Hitbox.X + this.Speed, this.Hitbox.Y , this.Hitbox.Width, this.Hitbox.Height);
+                bool collide = false;
+                foreach (Wall wall in walls)
+                {
+                    if (newHitbox.Intersects(wall.Hitbox))
+                    {
+                        collide = true;
+                        break;
+                    }
+                }
+                if (!collide)
+                    this.Hitbox.X += this.Speed;
                 this.Direction = Direction.Right;
                 this.Animate();
             }
 
+
+            ///////
             if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Left)
                 && keyboard.IsKeyUp(Keys.Right))
             {
@@ -106,6 +151,8 @@ namespace GTE
                 this.Timer = 0;
             }
 
+
+            ///////
             switch (this.Direction)
             {
                 case Direction.Up:

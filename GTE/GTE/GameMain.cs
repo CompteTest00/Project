@@ -13,23 +13,45 @@ namespace GTE
     {
         // FIELDS
         Player LocalPlayer;
+        List<Wall> Walls;
+
+        bool ClickDown;
 
         // CONSTRUCTOR
         public GameMain()
         {
             LocalPlayer = new Player();
+            Walls = new List<Wall>();
+            ClickDown = false;
         }
 
         // METHODS
 
-        // UPDTA & DRAW
+        // UPDTATE & DRAW
         public void Updtate(MouseState mouse, KeyboardState keyboard)
         {
-            LocalPlayer.Updtate(mouse, keyboard);
+            LocalPlayer.Updtate(mouse, keyboard, Walls);
+            foreach (Wall wall in Walls)
+            {
+                wall.Update(mouse, keyboard);
+            }
+            if (mouse.LeftButton == ButtonState.Pressed && !ClickDown)
+            {            
+                Walls.Add(new Wall(mouse.X, mouse.Y, Resources.Pixel, 32, Color.Black));
+                ClickDown = true;
+            }
+            if (mouse.LeftButton == ButtonState.Released && ClickDown)
+            {
+                ClickDown = false;
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             LocalPlayer.Draw(spriteBatch);
+            foreach (Wall wall in Walls)
+            {
+                wall.Draw(spriteBatch);
+            }
         }
     }
 }
