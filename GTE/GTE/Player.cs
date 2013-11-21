@@ -179,6 +179,9 @@ namespace GTE
             // On dessine un carré par exemple.
             spriteBatch.Draw(Resources.Pikachu, this.Hitbox, new Rectangle((this.FrameColumn - 1) * 25, (this.FrameLine - 1) * 27, 25, 27),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
+
+            //état du personnage
+            spriteBatch.DrawString(Resources.Font1, this.Hitbox.X + " " + this.Hitbox.Y, new Vector2(this.Hitbox.X - 8, this.Hitbox.Y - 20), Color.Red);
         }
     }
 }

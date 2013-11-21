@@ -36,7 +36,8 @@ namespace GTE
                 wall.Update(mouse, keyboard);
             }
             if (mouse.LeftButton == ButtonState.Pressed && !ClickDown)
-            {            
+            {
+                //Resources.Match.Play();
                 Walls.Add(new Wall(mouse.X, mouse.Y, Resources.Pixel, 32, Color.Black));
                 ClickDown = true;
             }
@@ -46,12 +47,12 @@ namespace GTE
             }
         }
         public void Draw(SpriteBatch spriteBatch)
-        {
-            LocalPlayer.Draw(spriteBatch);
+        {      
             foreach (Wall wall in Walls)
             {
                 wall.Draw(spriteBatch);
             }
+            LocalPlayer.Draw(spriteBatch);
         }
     }
 }
