@@ -22,6 +22,8 @@ namespace GTE
         public Game1() // Constructeur de la classe.
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight= 480;
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true; // Affiche la souris;
             //graphics.IsFullScreen = true; // met en full screen
