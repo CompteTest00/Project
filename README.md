@@ -1,4 +1,0 @@
-Poney
-=====
-
-Jeu epita.
