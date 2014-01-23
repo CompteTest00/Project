@@ -18,11 +18,15 @@ namespace GTE
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Player player;
+        public int screenheight, screenwidth;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+           screenwidth = Window.ClientBounds.Width;
+           screenheight = Window.ClientBounds.Height;
         }
 
         /// <summary>
@@ -36,6 +40,8 @@ namespace GTE
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            player = new Player(this, 100, 100);
+            player.Initialize();
         }
 
         /// <summary>
@@ -46,6 +52,7 @@ namespace GTE
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Resources.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -71,7 +78,7 @@ namespace GTE
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            player.Update();
             base.Update(gameTime);
         }
 
@@ -84,7 +91,9 @@ namespace GTE
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

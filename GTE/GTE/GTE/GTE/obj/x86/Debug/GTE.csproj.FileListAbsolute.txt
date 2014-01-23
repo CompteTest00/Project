@@ -1,0 +1,16 @@
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.exe
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.pdb
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.csprojResolveAssemblyReference.cache
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.exe
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.pdb
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\green_pointer.xnb
+C:\Users\AbdoulPC\Documents\GitHub\Gran-Threft-Epic\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\joueur_ct1.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\green_pointer.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\joueur_ct1.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.exe
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.pdb
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.csprojResolveAssemblyReference.cache
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.exe
+C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.pdb

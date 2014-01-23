@@ -1,0 +1,2 @@
+Content\green_pointer.xnb
+Content\joueur_ct1.xnb
