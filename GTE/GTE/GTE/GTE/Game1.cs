@@ -18,7 +18,7 @@ namespace GTE
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Player player;
+        public Player player;
         public int screenheight, screenwidth;
 
         public Game1()
@@ -40,7 +40,7 @@ namespace GTE
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            player = new Player(this, 100, 100);
+            player = new Player(this);
             player.Initialize();
         }
 

@@ -35,26 +35,18 @@ namespace GTE
             get { return game; }
             set { game = value; }
         }
-        private int pv;
-        public int Pv
-        {
-            get { return pv; }
-            set { pv = value; }
-        }
 
         private int pv_max;
         public int Pv_Max
         {
             get { return pv_max; }
-            set { pv = value; }
+            set { pv_max = value; }
         }
 
         //CONSTRUCTORS
-        public Player (Game1 game,int pv_max, int pv)
+       public Player (Game1 game)
         {
             this.game = game;
-            this.pv_max = pv_max;
-            this.pv = pv;
             _screenwidth = game.screenwidth;
             _screenheight = game.screenheight;
         }
@@ -76,11 +68,6 @@ namespace GTE
             Rotationangle = (float)Math.Atan2(distance.Y, distance.X);
             Rotationangle = (float)Math.PI / 2 + Rotationangle;
             origin = new Vector2((rec_player.Width / 2), (rec_player.Height / 2));
-
-        }
-
-        public void Tirer(MouseState mouse)
-        {
 
         }
 
