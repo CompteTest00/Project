@@ -15,7 +15,12 @@ namespace GTE
        int _screenheight, _screenwidth;
        private float Rotationangle;
        private Vector2 origin,distance,position;
-
+       private Weapons weapon;
+       public Vector2 Position
+       {
+           get { return position; }
+           set { position = value; }
+       }
         private Rectangle rec_player;
         public Rectangle Rec_Player
         {
@@ -23,12 +28,6 @@ namespace GTE
             set { rec_player = value; }
         }
         private Rectangle rec_pointer;
-        public Rectangle Rec_Pointer
-        {
-            get { return rec_pointer; }
-            set { rec_pointer = value; }
-        }
-
         private Game1 game;
         public Game1 Game
         {
@@ -36,11 +35,24 @@ namespace GTE
             set { game = value; }
         }
 
-        private int pv_max;
-        public int Pv_Max
+        private int bullet_number;
+        public int Bullet_Number
         {
-            get { return pv_max; }
-            set { pv_max = value; }
+            get { return bullet_number; }
+            set { bullet_number = value; }
+        }
+        private Weapons.Weapon_Type p_weapon;
+        public Weapons.Weapon_Type P_Weapon
+        {
+            get { return p_weapon; }
+            set { p_weapon = value; }
+        }
+
+        private List<Bullet> bullet_list; // Liste des balles qui ont été tirées
+        public List<Bullet> Bullet_List
+        {
+            get { return bullet_list; }
+            set { bullet_list = value; }
         }
 
         //CONSTRUCTORS
@@ -77,6 +89,11 @@ namespace GTE
             rec_pointer = new Rectangle(_screenwidth / 2, (_screenheight / 2) , 23, 24);
             rec_player = new Rectangle(_screenwidth / 2, _screenheight / 2, 29, 30);
             position = new Vector2(_screenwidth / 2, _screenheight / 2);
+            p_weapon = Weapons.Weapon_Type.Gun;
+            weapon = new Weapons(game);
+            weapon.Type = p_weapon;
+            bullet_number = weapon.Reload(p_weapon);
+            bullet_list = new List<Bullet>();
         }
 
         public void Update()

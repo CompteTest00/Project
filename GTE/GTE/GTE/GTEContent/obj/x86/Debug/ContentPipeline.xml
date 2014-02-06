@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\green_pointer.xnb</Output>
+      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\green_pointer.xnb</Output>
       <Time>2014-01-21T22:18:30.5917783+01:00</Time>
     </Item>
     <Item>
@@ -16,8 +16,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\joueur_ct1.xnb</Output>
+      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\joueur_ct1.xnb</Output>
       <Time>2014-01-21T22:49:31.1309179+01:00</Time>
+    </Item>
+    <Item>
+      <Source>temporarybulletsprite.bmp</Source>
+      <Name>temporarybulletsprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\temporarybulletsprite.xnb</Output>
+      <Time>2014-01-28T00:47:03.1832885+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -25,10 +34,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTEContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTEContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\EPITA\Project G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTEContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTEContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

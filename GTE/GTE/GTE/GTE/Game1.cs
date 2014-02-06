@@ -19,6 +19,8 @@ namespace GTE
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public Player player;
+        public Bullet bullet;
+        Weapons weapon;
         public int screenheight, screenwidth;
 
         public Game1()
@@ -41,7 +43,10 @@ namespace GTE
 
             base.Initialize();
             player = new Player(this);
+            bullet = new Bullet(this);
+            weapon = new Weapons(this);
             player.Initialize();
+            bullet.Initialize();
         }
 
         /// <summary>
@@ -79,6 +84,9 @@ namespace GTE
 
             // TODO: Add your update logic here
             player.Update();
+            bullet.Update();
+            weapon.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -93,6 +101,7 @@ namespace GTE
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             player.Draw(spriteBatch);
+            bullet.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
