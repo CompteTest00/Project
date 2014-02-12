@@ -28,6 +28,15 @@
       <Output>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\temporarybulletsprite.xnb</Output>
       <Time>2014-01-28T00:47:03.1832885+01:00</Time>
     </Item>
+    <Item>
+      <Source>Enemy_temp.bmp</Source>
+      <Name>Enemy_temp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\Enemy_temp.xnb</Output>
+      <Time>2011-03-06T17:47:40+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

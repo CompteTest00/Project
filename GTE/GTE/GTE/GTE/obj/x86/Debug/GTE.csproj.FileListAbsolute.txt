@@ -23,3 +23,4 @@ C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Con
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\temporarybulletsprite.xnb
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.exe
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.pdb
+C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\Enemy_temp.xnb

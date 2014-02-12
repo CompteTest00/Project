@@ -11,7 +11,7 @@ namespace GTE
 
     public class Bullet
     {
-        //FIELDS
+        #region FIELDS
         Vector2 distance;
         private Game1 game;
         Player player;
@@ -42,14 +42,17 @@ namespace GTE
             set { is_visible = value; }
         }
 
+        #endregion
 
+        #region CONSTRUCTORS
         //CONSTRUCTORS
         public Bullet(Game1 game)
         {
             this.game = game;
         }
-    
-        //METHODS
+        #endregion
+
+        #region METHODS
         public void Update()
         {
             player = game.player;
@@ -58,6 +61,8 @@ namespace GTE
                 foreach (Bullet bullet in player.Bullet_List)
                 {
                     bullet.position += bullet.velocity;
+                    bullet.rec_ball.X = (int)bullet.position.X;
+                    bullet.rec_ball.Y = (int)bullet.position.Y;
                     if (bullet.position.X > game.screenwidth || bullet.position.X < 0 || bullet.position.Y > game.screenheight || bullet.position.Y < 0)
                     {
                         bullet.is_visible = false;
@@ -102,6 +107,6 @@ namespace GTE
             }
         }
 
-
+        #endregion
     }
 }

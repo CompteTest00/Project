@@ -20,6 +20,9 @@ namespace GTE
         SpriteBatch spriteBatch;
         public Player player;
         public Bullet bullet;
+        public Enemy enemy;
+        public List<Enemy> Enemy_List;
+
         Weapons weapon;
         public int screenheight, screenwidth;
 
@@ -27,8 +30,6 @@ namespace GTE
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-           screenwidth = Window.ClientBounds.Width;
-           screenheight = Window.ClientBounds.Height;
         }
 
         /// <summary>
@@ -45,8 +46,11 @@ namespace GTE
             player = new Player(this);
             bullet = new Bullet(this);
             weapon = new Weapons(this);
+            Enemy_List = new List<Enemy>();
+            enemy = new Enemy(this);
             player.Initialize();
             bullet.Initialize();
+            enemy.Initialize();
         }
 
         /// <summary>
@@ -57,6 +61,8 @@ namespace GTE
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            screenwidth = graphics.GraphicsDevice.Viewport.Width;
+            screenheight = graphics.GraphicsDevice.Viewport.Height;
             Resources.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
@@ -85,6 +91,7 @@ namespace GTE
             // TODO: Add your update logic here
             player.Update();
             bullet.Update();
+            enemy.Update();
             weapon.Update(gameTime);
 
             base.Update(gameTime);
@@ -102,6 +109,7 @@ namespace GTE
             spriteBatch.Begin();
             player.Draw(spriteBatch);
             bullet.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

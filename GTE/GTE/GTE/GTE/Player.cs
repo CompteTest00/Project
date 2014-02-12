@@ -9,8 +9,8 @@ using Microsoft.Xna.Framework.Input;
 namespace GTE
 {
    public class Player
-    {
-        //FIELDS
+   {
+       #region FIELDS
 
        int _screenheight, _screenwidth;
        private float Rotationangle;
@@ -54,16 +54,18 @@ namespace GTE
             get { return bullet_list; }
             set { bullet_list = value; }
         }
+       #endregion
 
-        //CONSTRUCTORS
-       public Player (Game1 game)
+        #region CONSTRUCTORS
+        public Player (Game1 game)
         {
             this.game = game;
             _screenwidth = game.screenwidth;
             _screenheight = game.screenheight;
         }
+        #endregion
 
-        //METHODS
+        #region METHODS
         public void Orienter(MouseState mouse)
         {
 
@@ -92,7 +94,7 @@ namespace GTE
             p_weapon = Weapons.Weapon_Type.Gun;
             weapon = new Weapons(game);
             weapon.Type = p_weapon;
-            bullet_number = weapon.Reload(p_weapon);
+            bullet_number = weapon.Create_Clip(p_weapon);
             bullet_list = new List<Bullet>();
         }
 
@@ -106,6 +108,6 @@ namespace GTE
             spritebatch.Draw(Resources.texture_player, position, new Rectangle(0, 0, 29, 30), Color.White, Rotationangle , origin, 1f, SpriteEffects.None, 0);
             spritebatch.Draw(Resources.texture_pointer,rec_pointer,new Rectangle(0,0,23,24),Color.White);
         }
-
-    }
+        #endregion
+   }
 }

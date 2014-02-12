@@ -8,8 +8,9 @@ using Microsoft.Xna.Framework;
 namespace GTE
 {
    public class Weapons
-    {
-        private bool can_shoot = false;
+   {
+        #region FIELDS
+       private bool can_shoot = false;
         private float x = 0f;
         public enum Weapon_Type
         {
@@ -24,13 +25,17 @@ namespace GTE
             get { return type; }
             set { type = value; }
         }
+       #endregion
 
+        #region CONSTRUCTORS
         public Weapons(Game1 game)
         {
             this.game = game;
         }
+        #endregion
 
-        public int Reload(Weapon_Type weapon_type)
+        #region METHODS
+        public int Create_Clip(Weapon_Type weapon_type)
         {
                 int count = 0;
                 if (weapon_type == Weapon_Type.Gun)
@@ -56,39 +61,46 @@ namespace GTE
        
         public void Shoot(MouseState mouse, GameTime gameTime)
         {
-            if (x < 0.01f)
+            if (x < 0.1f)
             {
                 x = x + (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            if (x >= 0.01f)
+            if (x >= 0.1f)
             {
                 can_shoot = true;
             }
-
+            player = game.player;
             if (mouse.LeftButton == ButtonState.Pressed && can_shoot)
           {
-            player = game.player;
             Bullet new_bullet ;
             Vector2 position = new Vector2(player.Rec_Player.X, player.Rec_Player.Y);
             Vector2 distance;
             mouse = Mouse.GetState();
-            
-                if (player.Bullet_Number != 0)
-                {
-                    new_bullet = new Bullet(game);
-                    player.Bullet_Number--;
-                    distance.X = mouse.X - new_bullet.Rec_ball.X;
-                    distance.Y = mouse.Y - new_bullet.Rec_ball.Y;
-                    new_bullet.Position = position;
-                    new_bullet.Velocity = new_bullet.Bullet_Speed(distance, mouse, new_bullet);
-                    new_bullet.Position = position + new_bullet.Velocity;
-                    new_bullet.Is_Visible = true;
-                    player.Bullet_List.Add(new_bullet);
-                    x = 0f;
-                    can_shoot = false;
-                }
-                else
-                    Reload(player.P_Weapon);
+
+            if (player.Bullet_Number != 0)
+            {
+                new_bullet = new Bullet(game);
+                player.Bullet_Number--;
+                distance.X = mouse.X - new_bullet.Rec_ball.X;
+                distance.Y = mouse.Y - new_bullet.Rec_ball.Y;
+                new_bullet.Position = position;
+                new_bullet.Velocity = new_bullet.Bullet_Speed(distance, mouse, new_bullet);
+                new_bullet.Position = position + new_bullet.Velocity;
+                new_bullet.Is_Visible = true;
+                player.Bullet_List.Add(new_bullet);
+                x = 0f;
+                can_shoot = false;
+            }
+           }
+            Reload(player.P_Weapon);
+        }
+
+        public void Reload(Weapon_Type weapon_type)
+        {
+            player = game.player;
+            if (Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                player.Bullet_Number = Create_Clip(weapon_type);
             }
         }
 
@@ -96,6 +108,6 @@ namespace GTE
         {
             Shoot(Mouse.GetState(),gameTime);
         }
-
-    }
+        #endregion
+   }
 }
