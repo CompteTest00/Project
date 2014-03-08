@@ -8,9 +8,24 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GTE
 {
+    public enum Direction
+    {
+        Up, Down, Left, Right
+    };
+
    public class Player
    {
        #region FIELDS
+
+       Direction Direction;
+
+       int FrameLine;
+       int FrameColumn;
+       bool Animation;
+       int Timer;
+       SpriteEffects Effect;
+       int Speed = 2;
+       int AnimationSpeed = 9;
 
        int _screenheight, _screenwidth;
        private float Rotationangle;
@@ -21,13 +36,14 @@ namespace GTE
            get { return position; }
            set { position = value; }
        }
-        private Rectangle rec_player;
-        public Rectangle Rec_Player
+        private Rectangle hitbox;
+        public Rectangle Hitbox
         {
-            get { return rec_player; }
-            set { rec_player = value; }
+            get { return hitbox; }
+            set { hitbox = value; }
         }
         private Rectangle rec_pointer;
+
         private Game1 game;
         public Game1 Game
         {
@@ -54,6 +70,7 @@ namespace GTE
             get { return bullet_list; }
             set { bullet_list = value; }
         }
+
        #endregion
 
         #region CONSTRUCTORS
@@ -62,10 +79,100 @@ namespace GTE
             this.game = game;
             _screenwidth = game.screenwidth;
             _screenheight = game.screenheight;
+            this.Hitbox = new Rectangle(0, 0, 32, 32);
+            this.FrameLine = 2;
+            this.FrameColumn = 2;
+            this.Direction = Direction.Down;
+            this.Effect = SpriteEffects.None;
+            this.Animation = true;
+            this.Timer = 0;
         }
         #endregion
 
         #region METHODS
+
+        public void Animate()
+        {
+            this.Timer++;
+            if (this.Timer == this.AnimationSpeed)
+            {
+                this.Timer = 0;
+                if (this.Animation)
+                {
+                    this.FrameColumn++;
+                    if (this.FrameColumn > 3)
+                    {
+                        this.FrameColumn = 2;
+                        this.Animation = false;
+                    }
+                }
+                else
+                {
+                    this.FrameColumn--;
+                    if (this.FrameColumn < 1)
+                    {
+                        this.FrameColumn = 2;
+                        this.Animation = true;
+                    }
+                }
+            }
+        }
+
+        public void Update(MouseState mouse, KeyboardState keyboard)
+        {
+            if (keyboard.IsKeyDown(Keys.Up))
+            {
+                this.hitbox.Y -= this.Speed;
+                this.Direction = Direction.Up;
+                this.Animate();
+            }
+            else if (keyboard.IsKeyDown(Keys.Down))
+            {
+                this.hitbox.Y += this.Speed;
+                this.Direction = Direction.Down;
+                this.Animate();
+            }
+            else if (keyboard.IsKeyDown(Keys.Left))
+            {
+                this.hitbox.X -= this.Speed;
+                this.Direction = Direction.Left;
+                this.Animate();
+            }
+            else if (keyboard.IsKeyDown(Keys.Right))
+            {
+                this.hitbox.X += this.Speed;
+                this.Direction = Direction.Right;
+                this.Animate();
+            }
+            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.Right))
+            {
+                this.FrameColumn = 2;
+                this.Timer = 0;
+            }
+
+            switch (this.Direction)
+            {
+                case Direction.Up:
+                    this.FrameLine = 2;
+                    this.Effect = SpriteEffects.None;
+                    break;
+                case Direction.Down:
+                    this.FrameLine = 1;
+                    this.Effect = SpriteEffects.None;
+                    break;
+                case Direction.Left:
+                    this.FrameLine = 3;
+                    this.Effect = SpriteEffects.None;
+                    break;
+                case Direction.Right:
+                    this.FrameLine = 3;
+                    this.Effect = SpriteEffects.FlipHorizontally;
+                    break;
+            }
+
+            Orienter(Mouse.GetState());
+        }
+
         public void Orienter(MouseState mouse)
         {
 
@@ -77,11 +184,11 @@ namespace GTE
             {
                 rec_pointer.Y = mouse.Y;
             }
-            distance.X = mouse.X - rec_player.X;
-            distance.Y = mouse.Y - rec_player.Y;
+            distance.X = mouse.X - hitbox.X;
+            distance.Y = mouse.Y - hitbox.Y;
             Rotationangle = (float)Math.Atan2(distance.Y, distance.X);
-            Rotationangle = (float)Math.PI / 2 + Rotationangle;
-            origin = new Vector2((rec_player.Width / 2), (rec_player.Height / 2));
+            Rotationangle += (float)Math.PI / 2;
+            origin = new Vector2((hitbox.Width / 2), (hitbox.Height / 2));
 
         }
 
@@ -89,7 +196,6 @@ namespace GTE
         public void Initialize()
         {
             rec_pointer = new Rectangle(_screenwidth / 2, (_screenheight / 2) , 23, 24);
-            rec_player = new Rectangle(_screenwidth / 2, _screenheight / 2, 29, 30);
             position = new Vector2(_screenwidth / 2, _screenheight / 2);
             p_weapon = Weapons.Weapon_Type.Gun;
             weapon = new Weapons(game);
@@ -98,14 +204,11 @@ namespace GTE
             bullet_list = new List<Bullet>();
         }
 
-        public void Update()
-        {
-            Orienter(Mouse.GetState());
-        }
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Resources.texture_player, position, new Rectangle(0, 0, 29, 30), Color.White, Rotationangle , origin, 1f, SpriteEffects.None, 0);
+            spritebatch.Draw(Resources.texture_player, this.Hitbox, new Rectangle((this.FrameColumn - 1) * 32, (this.FrameLine - 1) * 32, 32, 32),
+               Color.White, Rotationangle, origin, SpriteEffects.None, 0f);
             spritebatch.Draw(Resources.texture_pointer,rec_pointer,new Rectangle(0,0,23,24),Color.White);
         }
         #endregion

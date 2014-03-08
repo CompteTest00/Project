@@ -22,6 +22,8 @@ namespace GTE
         public Bullet bullet;
         public Enemy enemy;
         public List<Enemy> Enemy_List;
+        public List<Particle> Particle_list;
+        public Particle particle;
 
         Weapons weapon;
         public int screenheight, screenwidth;
@@ -46,7 +48,9 @@ namespace GTE
             player = new Player(this);
             bullet = new Bullet(this);
             weapon = new Weapons(this);
+            particle = new Particle(this);
             Enemy_List = new List<Enemy>();
+            Particle_list = new List<Particle>();
             enemy = new Enemy(this);
             player.Initialize();
             bullet.Initialize();
@@ -89,9 +93,10 @@ namespace GTE
                 this.Exit();
 
             // TODO: Add your update logic here
-            player.Update();
+            player.Update(Mouse.GetState(),Keyboard.GetState());
             bullet.Update();
             enemy.Update();
+            particle.Update();
             weapon.Update(gameTime);
 
             base.Update(gameTime);
@@ -110,6 +115,7 @@ namespace GTE
             player.Draw(spriteBatch);
             bullet.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
+            particle.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

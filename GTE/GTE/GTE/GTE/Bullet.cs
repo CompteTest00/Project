@@ -83,8 +83,8 @@ namespace GTE
 
         public Vector2 Bullet_Speed(Vector2 distance, MouseState mouse, Bullet bullet)
         {
-            distance.X = mouse.X - game.player.Rec_Player.X;
-            distance.Y = mouse.Y - game.player.Rec_Player.Y;
+            distance.X = mouse.X - game.player.Hitbox.X;
+            distance.Y = mouse.Y - game.player.Hitbox.Y;
             float Rotationangle = (float)Math.Atan2(distance.Y, distance.X);
             bullet.velocity = new Vector2((float)Math.Cos(Rotationangle), (float)Math.Sin(Rotationangle)) * 10f;
             return bullet.velocity;
@@ -92,8 +92,8 @@ namespace GTE
 
         public void Initialize()
         {
-            rec_ball.X = game.player.Rec_Player.X;
-            rec_ball.Y = game.player.Rec_Player.Y;
+            rec_ball.X = game.player.Hitbox.X;
+            rec_ball.Y = game.player.Hitbox.Y;
             origin = Vector2.Zero;
            
         }
@@ -102,7 +102,7 @@ namespace GTE
         {
             foreach (Bullet bullet in player.Bullet_List)
             {
-                spritebatch.Draw(Resources.texture_bullet, bullet.position, null, Color.White, 0f, origin, 1f, SpriteEffects.None
+                spritebatch.Draw(Resources.texture_bullet, bullet.position, new Rectangle(0,0,2,2), Color.White, 0f, origin, 1f, SpriteEffects.None
                     ,0f);
             }
         }

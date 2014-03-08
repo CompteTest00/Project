@@ -73,7 +73,7 @@ namespace GTE
             if (mouse.LeftButton == ButtonState.Pressed && can_shoot)
           {
             Bullet new_bullet ;
-            Vector2 position = new Vector2(player.Rec_Player.X, player.Rec_Player.Y);
+            Vector2 position = new Vector2(player.Hitbox.X, player.Hitbox.Y);
             Vector2 distance;
             mouse = Mouse.GetState();
 

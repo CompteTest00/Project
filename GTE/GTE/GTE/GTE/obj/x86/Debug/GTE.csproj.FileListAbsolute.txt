@@ -19,8 +19,10 @@ C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\Mic
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.exe
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\obj\x86\Debug\GTE.pdb
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\green_pointer.xnb
-C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\joueur_ct1.xnb
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\temporarybulletsprite.xnb
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.exe
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\GTE.pdb
 C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\Enemy_temp.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\weapon_test.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\blood.xnb
+C:\Users\AbdoulPC\Desktop\Abdoul\Project_G-T-E\GTE\GTE\GTE\GTE\bin\x86\Debug\Content\Perso.xnb
