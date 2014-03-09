@@ -100,7 +100,7 @@ namespace GTE
 
         public void Draw(SpriteBatch spritebatch)
         {
-            foreach (Bullet bullet in player.Bullet_List)
+            foreach (Bullet bullet in game.player.Bullet_List)
             {
                 spritebatch.Draw(Resources.texture_bullet, bullet.position, new Rectangle(0,0,2,2), Color.White, 0f, origin, 1f, SpriteEffects.None
                     ,0f);
