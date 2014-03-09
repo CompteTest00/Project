@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace GTE
 {
@@ -102,8 +104,7 @@ namespace GTE
         {
             foreach (Bullet bullet in game.player.Bullet_List)
             {
-                spritebatch.Draw(Resources.texture_bullet, bullet.position, new Rectangle(0,0,2,2), Color.White, 0f, origin, 1f, SpriteEffects.None
-                    ,0f);
+                spritebatch.Draw(Resources.texture_bullet, bullet.position, new Rectangle(0,0,2,2), Color.White, 0f, origin, 1f, SpriteEffects.None ,0f);
             }
         }
 

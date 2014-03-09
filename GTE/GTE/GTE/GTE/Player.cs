@@ -195,6 +195,7 @@ namespace GTE
 
         public void Initialize()
         {
+            Mouse.SetPosition(_screenheight / 2, _screenwidth / 2);
             rec_pointer = new Rectangle(_screenwidth / 2, (_screenheight / 2) , 23, 24);
             position = new Vector2(_screenwidth / 2, _screenheight / 2);
             p_weapon = Weapons.Weapon_Type.Gun;

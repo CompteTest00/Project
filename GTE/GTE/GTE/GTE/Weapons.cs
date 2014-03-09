@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace GTE
 {
    public class Weapons
    {
         #region FIELDS
-       private bool can_shoot = false;
+        private bool can_shoot = false;
         private float x = 0f;
         public enum Weapon_Type
         {
@@ -58,6 +60,27 @@ namespace GTE
                     return 0;
         }
 
+        public SoundEffect SoundOf(Weapon_Type weapon)
+        {
+            switch (weapon)
+            {
+               case Weapon_Type.Sniper:
+                    return game.seffect_gun;
+                    
+                case Weapon_Type.Rifle:
+                   return game.seffect_gun;
+                    
+                case Weapon_Type.Gun:
+                    return game.seffect_gun;
+                    
+                case Weapon_Type.Bazooka:
+                    return game.seffect_gun;
+
+                default:
+                    return game.seffect_gun;
+            }
+        }
+
        
         public void Shoot(MouseState mouse, GameTime gameTime)
         {
@@ -79,6 +102,7 @@ namespace GTE
 
             if (player.Bullet_Number != 0)
             {
+                SoundOf(player.P_Weapon).Play();
                 new_bullet = new Bullet(game);
                 player.Bullet_Number--;
                 distance.X = mouse.X - new_bullet.Rec_ball.X;
@@ -93,6 +117,7 @@ namespace GTE
             }
            }
             Reload(player.P_Weapon);
+
         }
 
         public void Reload(Weapon_Type weapon_type)
