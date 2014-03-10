@@ -17,6 +17,7 @@ namespace GTE
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        #region FIELDS
         public bool IsMousevisible { get; set;}
 
         public int screenheight, screenwidth;
@@ -30,6 +31,8 @@ namespace GTE
         public List<Enemy> Enemy_List;
         public List<Particle> Particle_list;
         public Particle particle;
+        public Camera camera;
+        public Map map1;
 
         //Weapons
         Weapons weapon;
@@ -50,7 +53,7 @@ namespace GTE
         Button /*Menu*/buttonPlay, buttonMulti, buttonOptions, buttonExit,
                /*Multi*/buttonPlayOnline, buttonPlayLocal,
                /*Options*/buttonVolume, buttonResolution, buttonReturn;
-
+        #endregion
 
         public Game1()
         {
@@ -78,6 +81,9 @@ namespace GTE
             player.Initialize();
             bullet.Initialize();
             enemy.Initialize();
+            camera = new Camera(GraphicsDevice.Viewport, this);
+            map1 = new Map();
+            map1.Generate(map1.Create_Map(0), 32);
         }
 
         /// <summary>
@@ -94,6 +100,7 @@ namespace GTE
             screenheight = graphics.GraphicsDevice.Viewport.Height;
             Resources.LoadContent(Content);
 
+            #region Resources des ecrans du jeu
             //Menu
             buttonPlay = new Button(Content.Load<Texture2D>("Jouer"), graphics.GraphicsDevice);
             buttonPlay.setPosition(new Vector2((int)screenwidth / 4, (int)3 * screenheight / 10));
@@ -122,15 +129,18 @@ namespace GTE
             buttonVolume.setPosition(new Vector2((int)screenwidth / 4, (int)2 * screenheight / 5 + screenheight / 14));
             buttonReturn = new Button(Content.Load<Texture2D>("Retour"), graphics.GraphicsDevice);
             buttonReturn.setPosition(new Vector2((int)3 * screenwidth / 4, (int)6 * screenheight / 10));
+            #endregion
 
+            #region Resources des songs et soundeffects
             //Load des Sons
             song_menu = Content.Load<Song>("song_menu");
 
             //Load des Effects
             seffect_gun = Content.Load<SoundEffect>("seffect_gun");
             //seffect_reload = Content.Load<SoundEffect>("effect_reload");
+            #endregion
 
-            //Lecture des Sons
+            #region Musique du jeu
             MediaPlayer.IsRepeating = true;
             switch (CurrentGameState)
             {
@@ -171,6 +181,7 @@ namespace GTE
                         break;
                     }
             }
+            #endregion
         }
 
         /// <summary>
@@ -190,15 +201,11 @@ namespace GTE
         protected override void Update(GameTime gameTime)
         {
             MouseState mouse = Mouse.GetState();
-            this.IsMousevisible = true;
-
-            // Allows the game to exit
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape) == true && CurrentGameState != (GameState.Play) && CurrentGameState != (GameState.Arena))
-                //this.Exit();
 
             // TODO: Add your update logic here
             switch (CurrentGameState)
             {
+                #region Menu
                 case GameState.Menu:
                     {
                         this.IsMouseVisible = true;
@@ -220,7 +227,9 @@ namespace GTE
                         base.Update(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Options
                 case GameState.Options:
                     {
                         this.IsMouseVisible = true;
@@ -235,7 +244,9 @@ namespace GTE
                         base.Update(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Play
                 case GameState.Play:
                     {
                         var newState = new KeyboardState(Keys.Escape);
@@ -249,11 +260,13 @@ namespace GTE
                         enemy.Update();
                         particle.Update();
                         weapon.Update(gameTime);
-
+                        camera.Update(gameTime, this);
                         base.Update(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Multi
                 case GameState.Multi:
                     {
                         this.IsMouseVisible = true;
@@ -269,7 +282,9 @@ namespace GTE
                         base.Update(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Pause
                 case GameState.Pause:
                     {
                         var newState = new KeyboardState(Keys.Escape);
@@ -283,6 +298,7 @@ namespace GTE
                         base.Update(gameTime);
                         break;
                     }
+                #endregion
             }
         }
 
@@ -295,6 +311,7 @@ namespace GTE
           // TODO: Add your drawing code here
             switch (CurrentGameState)
             {
+                #region Menu
                 case GameState.Menu:
                     {
                         spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
@@ -311,7 +328,9 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Options
                 case GameState.Options:
                     {
                         GraphicsDevice.Clear(Color.Purple);
@@ -325,12 +344,15 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Play
                 case GameState.Play:
                     {
-                        GraphicsDevice.Clear(Color.CornflowerBlue);
+                        GraphicsDevice.Clear(Color.Black);
 
-                        spriteBatch.Begin();
+                        spriteBatch.Begin(SpriteSortMode.Deferred,BlendState.AlphaBlend,null,null,null,null,camera.Transform);
+                        map1.Draw(spriteBatch);
                         player.Draw(spriteBatch);
                         bullet.Draw(spriteBatch);
                         enemy.Draw(spriteBatch);
@@ -340,7 +362,9 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Multi
                 case GameState.Multi:
                     {
                         GraphicsDevice.Clear(Color.Red);
@@ -354,7 +378,9 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Arena
                 case GameState.Arena:
                     {
                         spriteBatch.Begin();
@@ -363,7 +389,9 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
 
+                #region Pause
                 case GameState.Pause:
                     {
                         GraphicsDevice.Clear(Color.Gray);
@@ -375,6 +403,7 @@ namespace GTE
                         base.Draw(gameTime);
                         break;
                     }
+                #endregion
             }
         }
     }
