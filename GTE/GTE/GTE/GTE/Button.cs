@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Threading;
 
 namespace GTE
 {
@@ -18,6 +19,7 @@ namespace GTE
         Color color = new Color(255, 255, 255);
         public bool overlay;
         public bool isClicked;
+
         #endregion
 
         #region CONSTRUCTOR

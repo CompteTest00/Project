@@ -4,3 +4,16 @@ Content\Enemy_temp.xnb
 Content\weapon_test.xnb
 Content\blood.xnb
 Content\Perso.xnb
+Content\song_menu.xnb
+Content\song_menu.wma
+Content\Jouer.xnb
+Content\Local.xnb
+Content\Multijoueur.xnb
+Content\Option.xnb
+Content\Quitter.xnb
+Content\Resolution.xnb
+Content\Retour.xnb
+Content\Volume.xnb
+Content\En ligne.xnb
+Content\seffect_gun.xnb
+Content\GrandTheftEpicMainTitle.xnb
